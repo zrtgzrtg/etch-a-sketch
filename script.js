@@ -29,6 +29,16 @@ if(amountOfDivsUser >= 0) {
 }
     createGrid(amountOfDivs)
 })
+
+const randomColorButton = document.querySelector(".random-color-button")
+randomColorButton.addEventListener("click", () => {
+    let allDivs = document.querySelectorAll(".copyDiv")
+    allDivs.forEach((eachDiv)=>{
+        let colorArray = rgbRandomizer()
+        eachDiv.style.cssText += `background-color: rgb(${colorArray[0]}, ${colorArray[1]}, ${colorArray[2]})`
+    })
+    
+})
 function createGrid(amountOfDivs) {
     let remList = document.querySelectorAll(".copyDiv")
     if(remList !== null) {
@@ -59,6 +69,8 @@ container.addEventListener("mouseover", (event) => {
     
     if(target instanceof HTMLDivElement) {
     target.style.cssText += " background-color: grey;"
+    rgbArray = rgbRandomizer()
+    target.style.cssText += `background-color`
     }
 
 })
@@ -68,3 +80,15 @@ container.addEventListener("mouseout", (event) => {
         target.style.cssText += " background-color: white;"
     }
 })
+function rndNumberRGB() {
+    let ret = Math.floor((Math.random()*255))+1
+    return ret
+}
+function rgbRandomizer(){
+
+    return [
+        rndNumberRGB(),
+        rndNumberRGB(),
+        rndNumberRGB()
+    ]
+}

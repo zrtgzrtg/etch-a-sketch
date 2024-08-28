@@ -25,9 +25,24 @@
     flex: 1 1 100%;
     height: 30px;
     width: 150px;
+    border-radius: 8px;
     color: white;
     background-color: lightseagreen;
-    border-radius: 8px;
+    font-family: "Roboto";
+    font-size: 16px;
+}
+.random-color-button-container {
+    display: flex;
+    justify-content: center;
+}
+.random-color-button{
+    flex: 1 1 100%;
+    margin-top: 24px;
+    height: 30px;
+    width: 150px;
+    color: white;
+    background-color: lightseagreen;
+    border-radius: 16px;
     font-family: "Roboto";
     font-size: 16px;
 }
