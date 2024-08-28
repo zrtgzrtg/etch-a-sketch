@@ -1,4 +1,3 @@
-
 const sizeButton = document.querySelector(".size-button")
 let amountOfDivsUser = -1
 const container = document.querySelector("#container")
@@ -31,30 +30,41 @@ if(amountOfDivsUser >= 0) {
     createGrid(amountOfDivs)
 })
 function createGrid(amountOfDivs) {
-    remList = document.querySelectorAll(".copyDiv")
+    let remList = document.querySelectorAll(".copyDiv")
     if(remList !== null) {
     remList.forEach((cpD) => {
         cpD.remove()
     })
     }
+    const totalSpace = 960
+    const divsInOneLine = Math.sqrt(amountOfDivs)
+    let overhang = totalSpace % divsInOneLine
+    let divSize = (totalSpace - overhang) / divsInOneLine
+    let divSizeInPercent = (divSize/totalSpace)*100
 for(let i = 0; i<amountOfDivs;i++) {
 let copyDiv = document.createElement("div")
-copyDiv.classList.add("copyDiv")
 copyDiv.id = i
+copyDiv.classList.add("copyDiv")
+            
+    copyDiv.style.cssText = `box-sizing: border-box; width: ${divSize}px; height: ${divSize}px; flex: 1 1 calc(100% / ${divsInOneLine}); border: 1px dotted black; aspect-ration: 1:1;`
 container.appendChild(copyDiv)
+        }
+  
+    
 }
-}
+
+
 container.addEventListener("mouseover", (event) => {
     let target = event.target
     
     if(target instanceof HTMLDivElement) {
-    target.style.cssText = "background-color: grey;"
+    target.style.cssText += " background-color: grey;"
     }
 
 })
 container.addEventListener("mouseout", (event) => {
     let target = event.target
     if(target instanceof HTMLDivElement) {
-        target.style.cssText = "background-color: white;"
+        target.style.cssText += " background-color: white;"
     }
 })
