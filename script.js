@@ -15,11 +15,11 @@ sizeButton.addEventListener("click", () => {
     amountOfDivsUser = prompt("How big should the grid be? (max 100)")
     console.log(amountOfDivsUser)
     if(amountOfDivsUser<0 || amountOfDivsUser>100) {
-        const outputDiv = document.querySelector(".output-div")
+        const outputDiv = document.querySelector(".btn-container")
         const retText = document.createElement("div")
         retText.classList.add("output-text")
         retText.textContent = "Choose a size between 0 and 100"
-        outputDiv.appendChild(retText)
+        outputDiv.insertBefore(retText, container)
         return
     }
 
