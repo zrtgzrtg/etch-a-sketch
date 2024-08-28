@@ -39,6 +39,15 @@ randomColorButton.addEventListener("click", () => {
     })
     
 })
+const blackColorButton = document.querySelector(".black-color-button")
+blackColorButton.addEventListener("click", () => {
+    let allDivs = document.querySelectorAll(".copyDiv")
+    allDivs.forEach((eachDiv)=>{
+        let colorArray = blackMode()
+        eachDiv.style.cssText += `background-color: rgb(${colorArray[0]}, ${colorArray[1]}, ${colorArray[2]})`
+    })
+    
+})
 function createGrid(amountOfDivs) {
     let remList = document.querySelectorAll(".copyDiv")
     if(remList !== null) {
@@ -56,7 +65,8 @@ let copyDiv = document.createElement("div")
 copyDiv.id = i
 copyDiv.classList.add("copyDiv")
             
-    copyDiv.style.cssText = `box-sizing: border-box; width: ${divSize}px; height: ${divSize}px; flex: 1 1 calc(100% / ${divsInOneLine}); border: 1px dotted black; aspect-ration: 1:1;`
+    copyDiv.style.cssText = `box-sizing: border-box; width: ${divSize}px; height: ${divSize}px; flex: 1 1 calc(100% / ${divsInOneLine});  aspect-ratio: 1:1; border: 1px solid grey;`
+//border: 1px dotted black; == add a border to the grid squares
 container.appendChild(copyDiv)
         }
   
@@ -90,5 +100,12 @@ function rgbRandomizer(){
         rndNumberRGB(),
         rndNumberRGB(),
         rndNumberRGB()
+    ]
+}
+function blackMode() {
+    return [
+        0,
+        0,
+        0
     ]
 }
